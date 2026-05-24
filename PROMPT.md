@@ -28,16 +28,18 @@
 2. `<KIT_PATH>/METHODOLOGY.md` ← повний стандарт, SSOT
 3. `<KIT_PATH>/template/README.md`
 4. `<KIT_PATH>/template/CLAUDE.md`
-5. `<KIT_PATH>/template/TASKS.md`
-6. `<KIT_PATH>/template/DEMO.md`
-7. `<KIT_PATH>/template/simple_words.md`
-8. `<KIT_PATH>/template/SESSION.md`
-9. `<KIT_PATH>/template/DECISIONS.md`
-10. `<KIT_PATH>/template/RISKS.md`
-11. `<KIT_PATH>/template/ACCESS.example.md`
-12. `<KIT_PATH>/template/docs/00-README.md`
+5. `<KIT_PATH>/template/WORK_MODES.md`
+6. `<KIT_PATH>/template/TASKS.md`
+7. `<KIT_PATH>/template/DEMO.md`
+8. `<KIT_PATH>/template/simple_words.md`
+9. `<KIT_PATH>/template/SESSION.md`
+10. `<KIT_PATH>/template/DECISIONS.md`
+11. `<KIT_PATH>/template/RISKS.md`
+12. `<KIT_PATH>/template/ACCESS.example.md`
+13. `<KIT_PATH>/template/docs/00-README.md`
+14. `<KIT_PATH>/template/docs/01-domain-template.md`
 
-Зрозумій структуру і призначення кожного файлу. Якщо час обмежений — fast path: `STANDART.md` обов'язково, решта 11 файлів читати at-need перед відповідним кроком. Пріоритет при суперечності: `STANDART.md` > `METHODOLOGY.md` > файли в `template/`.
+Зрозумій структуру і призначення кожного файлу. Якщо час обмежений — fast path: `STANDART.md` обов'язково, решта шаблонних файлів читати at-need перед відповідним кроком. Пріоритет при суперечності: `STANDART.md` > `METHODOLOGY.md` > файли в `template/`.
 
 ## Крок 1 — визначити режим
 
@@ -74,6 +76,7 @@ A10. **Чи є вже матеріал** (нотатки, файли, посил
    - `DEMO.md` — приймальний сценарій, що випливає з Done when (A5). Кожен критерій → один крок DEMO.
    - `TASKS.md` — задачі з A9 як P0-001…P0-003, статус READY, заповнені поля Safety, Steps, Done when.
 3. **Не заповнювати** (мають лишитись з placeholder-ами):
+   - `WORK_MODES.md` — універсальні правила вибору режиму роботи; лишається як шаблон.
    - `RISKS.md` — порожній до першої знайденої загрози.
    - `DECISIONS.md` — порожній до першого нетривіального вибору.
    - `SESSION.md` — порожній до першої реальної робочої сесії.
