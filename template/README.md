@@ -39,10 +39,11 @@
 ## Як користуватись цією папкою
 
 1. Прочитати [CLAUDE.md](CLAUDE.md) — правила гри, що дозволено / заборонено.
-2. Прочитати [simple_words.md](simple_words.md) — пояснення для замовника / нефахівця.
-3. Відкрити [TASKS.md](TASKS.md) — обрати задачу зі `Status: READY` і `Safety: READ-ONLY`.
-4. Записати результат у [SESSION.md](SESSION.md) як новий append-only запис.
-5. Якщо прийнято нетривіальне рішення — додати запис у [DECISIONS.md](DECISIONS.md).
+2. Прочитати [WORK_MODES.md](WORK_MODES.md) — як використовувати ChatGPT, Agent Mode, Codex CLI, Claude CLI, Terminal і live systems.
+3. Прочитати [simple_words.md](simple_words.md) — пояснення для замовника / нефахівця.
+4. Відкрити [TASKS.md](TASKS.md) — обрати задачу зі `Status: READY` і `Safety: READ-ONLY`.
+5. Записати результат у [SESSION.md](SESSION.md) як новий append-only запис.
+6. Якщо прийнято нетривіальне рішення — додати запис у [DECISIONS.md](DECISIONS.md).
 
 ---
 
@@ -51,6 +52,7 @@
 | Файл | Питання, на яке відповідає |
 |---|---|
 | [CLAUDE.md](CLAUDE.md) | Які правила, що можна / не можна без дозволу |
+| [WORK_MODES.md](WORK_MODES.md) | Як обирати режим роботи: ChatGPT, Agent Mode, Codex CLI, Claude CLI, Terminal, live systems |
 | [simple_words.md](simple_words.md) | Пояснення без жаргону для замовника |
 | [TASKS.md](TASKS.md) | Що робити прямо зараз |
 | [SESSION.md](SESSION.md) | Що зроблено сьогодні, де зупинились |
