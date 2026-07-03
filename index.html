@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harness Engineering — MIN Project Creator</title>
+  <style>
+    :root {
+      --bg: #0c0e14; --panel: #141820; --border: #2a3142; --text: #e8ecf4;
+      --muted: #8b95a8; --green: #3fb950; --cyan: #56d4dd; --yellow: #e3b341;
+      --orange: #f0883e; --blue: #6ca6ff; --purple: #b794f6; --red: #f85149;
+      --accent: #7c6bf0; --font: "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      background: radial-gradient(1100px 520px at 85% -5%, #1a1530 0%, var(--bg) 58%);
+      color: var(--text); font-family: Inter, system-ui, sans-serif;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 16px 20px 40px; }
+    .top-nav {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .top-nav a, .top-nav button.tab {
+      color: var(--muted); text-decoration: none; font-size: 0.86rem;
+      padding: 6px 14px; border-radius: 8px; border: 1px solid transparent;
+      background: transparent; cursor: pointer; font-family: inherit;
+    }
+    .top-nav a:hover, .top-nav button.tab:hover { color: var(--text); background: #1c2230; }
+    .top-nav a.active, .top-nav button.tab.active {
+      color: var(--accent); border-color: var(--accent);
+      background: rgba(124, 107, 240, 0.12);
+    }
+    .top-nav .ext { margin-left: auto; }
+    header h1 { font-size: 1.35rem; margin: 0 0 6px; }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; max-width: 820px; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .layout { display: grid; grid-template-columns: 270px 1fr; gap: 14px; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { order: 2; } }
+    .sidebar, .main-panel, .term-wrap {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    }
+    .sidebar { padding: 14px; max-height: calc(100vh - 160px); overflow-y: auto; }
+    .sidebar h2 {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); margin: 0 0 10px;
+    }
+    .mod-list { list-style: none; padding: 0; margin: 0; }
+    .mod-list li {
+      padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;
+      margin-bottom: 2px; line-height: 1.35;
+    }
+    .mod-list li:hover { background: #1c2230; }
+    .mod-list li.active { background: #1c2230; color: var(--accent); }
+    .mod-list li.done { color: var(--green); }
+    .main-panel { padding: 20px; min-height: 520px; }
+    .theory h2 { font-size: 1.15rem; margin: 0 0 12px; color: var(--cyan); }
+    .theory h3 { font-size: 0.95rem; margin: 18px 0 8px; color: var(--purple); }
+    .theory p, .theory li { font-size: 0.9rem; line-height: 1.6; color: #c5cdd9; }
+    .theory ul, .theory ol { padding-left: 1.2rem; }
+    .theory code, .term-out code {
+      font-family: var(--font); font-size: 0.82rem;
+      background: #0c0e14; padding: 2px 6px; border-radius: 4px; color: var(--green);
+    }
+    .theory pre {
+      background: #0c0e14; border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 14px; overflow-x: auto; font-family: var(--font); font-size: 0.78rem;
+      line-height: 1.5; color: var(--green); margin: 10px 0;
+    }
+    .badge {
+      display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 99px;
+      border: 1px solid var(--border); color: var(--muted); margin-right: 6px;
+    }
+    .badge.risk { border-color: var(--red); color: var(--red); }
+    .badge.safe { border-color: var(--green); color: var(--green); }
+    .callout {
+      border-left: 3px solid var(--yellow); background: rgba(227,179,65,0.08);
+      padding: 12px 14px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 0.88rem;
+      line-height: 1.55; color: #e6c87a;
+    }
+    .practice-layout { display: grid; grid-template-columns: 280px 1fr; gap: 14px; }
+    @media (max-width: 900px) { .practice-layout { grid-template-columns: 1fr; } }
+    .cmd-list { list-style: none; padding: 0; margin: 8px 0 0; }
+    .cmd-list li {
+      font-family: var(--font); font-size: 0.72rem; padding: 5px 8px; border-radius: 5px;
+      cursor: pointer; color: var(--muted); margin-bottom: 3px; word-break: break-all;
+    }
+    .cmd-list li:hover { background: #1c2230; color: var(--text); }
+    .cmd-list li.done { color: var(--green); }
+    .progress { height: 6px; background: #1c2230; border-radius: 99px; overflow: hidden; margin: 8px 0; }
+    .progress > div {
+      height: 100%; background: linear-gradient(90deg, var(--accent), var(--cyan));
+      width: 0%; transition: width 0.3s;
+    }
+    .term-wrap { overflow: hidden; }
+    .term-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 14px; background: #0c0e14; border-bottom: 1px solid var(--border);
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .term-dots { display: flex; gap: 6px; }
+    .term-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .term-dots .r { background: var(--red); }
+    .term-dots .y { background: var(--yellow); }
+    .term-dots .g { background: var(--green); }
+    .term-out {
+      height: 340px; overflow-y: auto; padding: 12px 14px;
+      font-family: var(--font); font-size: 0.78rem; line-height: 1.55;
+    }
+    .term-out .line { margin-bottom: 4px; white-space: pre-wrap; word-break: break-word; }
+    .term-out .hint { color: var(--yellow); }
+    .term-out .danger { color: var(--red); }
+    .term-out .prompt { color: var(--cyan); }
+    .term-input-row {
+      display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+      border-top: 1px solid var(--border); background: #0c0e14;
+    }
+    .term-input-row .prompt-label { font-family: var(--font); font-size: 0.78rem; color: var(--cyan); white-space: nowrap; }
+    .term-input-row input {
+      flex: 1; background: transparent; border: none; outline: none;
+      font-family: var(--font); font-size: 0.82rem; color: var(--text);
+    }
+    .term-btns { display: flex; gap: 6px; padding: 8px 14px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .btn {
+      background: #1c2230; border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 7px 12px; font-size: 0.8rem; cursor: pointer;
+    }
+    .btn:hover { background: #252d3d; }
+    .btn-primary { background: #5b4dd6; border-color: var(--accent); }
+    .btn-primary:hover { background: var(--accent); }
+    .q-meta { color: var(--muted); font-size: 0.78rem; margin-bottom: 14px; }
+    .q-meta span { color: var(--cyan); font-family: var(--font); }
+    .q-card {
+      border: 1px solid var(--border); border-radius: 10px; padding: 16px;
+      margin-bottom: 16px; background: #0c0e14;
+    }
+    .q-title { color: var(--purple); font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; }
+    .q-text { font-size: 0.95rem; line-height: 1.55; margin-bottom: 14px; }
+    .opt {
+      display: block; width: 100%; text-align: left; margin-bottom: 8px;
+      padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--panel); color: var(--text); font-size: 0.88rem;
+      cursor: pointer; line-height: 1.4;
+    }
+    .opt:hover:not(:disabled) { border-color: var(--blue); background: #1a2030; }
+    .opt.correct { border-color: var(--green); background: rgba(63,185,80,0.12); }
+    .opt.wrong { border-color: var(--red); background: rgba(248,81,73,0.1); }
+    .opt:disabled { cursor: default; }
+    .feedback {
+      margin-top: 12px; padding: 12px; border-radius: 8px;
+      background: rgba(227,179,65,0.1); border-left: 3px solid var(--yellow);
+      color: #e6c87a; font-size: 0.86rem; line-height: 1.5; display: none;
+    }
+    .feedback.show { display: block; }
+    .pager { display: flex; gap: 8px; justify-content: space-between; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+    .score-box {
+      text-align: center; padding: 24px; border: 1px solid var(--border);
+      border-radius: 12px; background: #0c0e14; margin-top: 16px;
+    }
+    .score-box h3 { margin: 0 0 8px; color: var(--cyan); }
+    .score-num { font-size: 2.5rem; font-weight: 700; color: var(--green); font-family: var(--font); }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li {
+      padding: 8px 10px; border-radius: 6px; font-size: 0.85rem; cursor: pointer;
+      border: 1px solid transparent; margin-bottom: 4px;
+    }
+    .checklist li:hover { background: #1c2230; }
+    .checklist li.checked { color: var(--green); border-color: rgba(63,185,80,0.3); }
+    .checklist li.checked::before { content: "✓ "; }
+    .checklist li:not(.checked)::before { content: "○ "; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="top-nav">
+      <button type="button" class="tab active" data-page="theory">Теорія</button>
+      <button type="button" class="tab" data-page="practice">Практика</button>
+      <button type="button" class="tab" data-page="quiz">Quiz</button>
+      <a href="course.html">Уроки MD</a>
+      <a href="cheatsheet.html">Шпаргалка</a>
+      <a href="SIMPLE_WORDS.md" target="_blank" rel="noopener">Простими словами</a>
+      <a href="STANDART.md" class="ext" target="_blank" rel="noopener">STANDART ↗</a>
+    </nav>
+    <header>
+      <h1>Harness Engineering — MIN Project Creator</h1>
+      <p>
+        Навчальний курс: як створити <strong>універсальний AI-ready проєкт</strong> для будь-якої задачі.
+        <strong style="color:var(--yellow)">Вперше тут?</strong> Теорія → <strong>«0. Простими словами»</strong> або
+        <a href="SIMPLE_WORDS.md" style="color:var(--cyan)">SIMPLE_WORDS.md</a> — ідея без жаргону.
+        Потім модулі 1–10, практика, quiz.
+      </p>
+    </header>
+
+    <div id="page-theory" class="page active">
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Модулі теорії</h2>
+          <ul class="mod-list" id="theoryNav"></ul>
+        </aside>
+        <section class="main-panel theory" id="theoryContent"></section>
+      </div>
+    </div>
+
+    <div id="page-practice" class="page">
+      <div class="practice-layout">
+        <aside class="sidebar">
+          <h2>Сценарій</h2>
+          <ul class="mod-list" id="practiceNav"></ul>
+          <h2 style="margin-top:14px">Прогрес</h2>
+          <div class="progress"><div id="practiceProgress"></div></div>
+          <div style="font-size:0.78rem;color:var(--muted)" id="practiceStats">0 / 0</div>
+          <h2 style="margin-top:14px">Команди</h2>
+          <ul class="cmd-list" id="cmdList"></ul>
+        </aside>
+        <div class="term-wrap">
+          <div class="term-bar">
+            <div class="term-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+            <span id="termTitle">macOS zsh — harness practice</span>
+          </div>
+          <div class="term-out" id="termOut"></div>
+          <div class="term-input-row">
+            <span class="prompt-label" id="termPrompt">szubar@Mac %</span>
+            <input type="text" id="termInput" autocomplete="off" spellcheck="false" placeholder="Введіть команду…" />
+          </div>
+          <div class="term-btns">
+            <button type="button" class="btn" id="btnClear">Очистити</button>
+            <button type="button" class="btn" id="btnReset">Скинути сценарій</button>
+            <button type="button" class="btn btn-primary" id="btnNextMod">Наступний сценарій →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-quiz" class="page">
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Розділи квізу</h2>
+          <div class="progress"><div id="quizProgress"></div></div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:10px" id="quizStats">0 / 0</div>
+          <ul class="mod-list" id="quizNav"></ul>
+        </aside>
+        <section class="main-panel" id="quizArea">
+          <div class="q-meta">Оберіть розділ зліва або натисніть «Почати квіз»</div>
+          <button type="button" class="btn btn-primary" id="btnStartQuiz">Почати квіз — усі розділи</button>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="trainer.js"></script>
+</body>
+</html>

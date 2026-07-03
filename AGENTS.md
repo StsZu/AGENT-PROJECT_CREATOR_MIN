@@ -2,7 +2,9 @@
 
 ## Project Structure & Module Organization
 
-This repository is a MIN template kit, not an application. The root Markdown files define the methodology and operating instructions:
+This repository is a MIN template kit and **Harness Engineering course**, not an application. Interactive trainer: `index.html` + `trainer.js`. Lessons: `lessons/` + `course.html`.
+
+The root Markdown files define the methodology and operating instructions:
 
 - `STANDART.md` is the one-page rule set.
 - `METHODOLOGY.md` is the full source of truth for the MIN workflow.
