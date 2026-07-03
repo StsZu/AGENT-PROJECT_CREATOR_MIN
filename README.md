@@ -27,6 +27,14 @@ node scripts/build-content.js
 | [course.html](course.html) | Markdown-уроки |
 | [cheatsheet.html](cheatsheet.html) | Шпаргалка команд і файлів |
 
+### Додаткові матеріали (відео)
+
+| Матеріал | Зв'язок з MIN |
+|---|---|
+| [Harness ТОП-7 (2026)](https://youtu.be/tC28qXlPHC0) | Контекст harness — модуль 11 |
+| [Harness + Ralph Loop](https://youtu.be/OSG05Xq7np4) | Цикл ітерацій — mini-Ralph у P0 |
+| [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/) | docs/ як system of record |
+
 ## Kit (методика)
 
 | Файл | Призначення |

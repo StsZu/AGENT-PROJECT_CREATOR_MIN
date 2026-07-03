@@ -12,6 +12,12 @@
 | Lint | Перевірка `UNKNOWN` у wiki |
 | Kit | AGENT-PROJECT_CREATOR_MIN (шаблон) |
 | Target | Твоя нова папка проєкту |
+| Ralph Loop | Зробив→перевірив→виправив (у MIN: одна P0 + людина) |
+
+## Відео / контекст 2026
+
+- [ТОП-7 Harness](https://youtu.be/tC28qXlPHC0) · [Ralph Loop](https://youtu.be/OSG05Xq7np4)
+- Модуль 11 в `index.html` · урок 11 в `course.html`
 
 ## Bootstrap Mode A
 

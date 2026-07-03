@@ -43,3 +43,7 @@ echo '## [date] close-out | phase DONE' >> SESSION.md
 - заповненим README + TASKS + SESSION
 - одним закритим P0 з артефактом
 - пройденим DEMO (хоча б частково)
+
+---
+
+Опційно: [Урок 11. Harness 2026 і Ralph Loop](11-harness-2026-context.md)

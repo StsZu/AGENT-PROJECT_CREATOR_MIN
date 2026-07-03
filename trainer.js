@@ -199,6 +199,34 @@ Forbidden: unrelated edits, secrets, auto-commit, rm -rf</pre>`
       <h3>DEMO ≠ «показати слайди»</h3>
       <p>Кожен крок Done when → один спостережуваний крок DEMO. Відмічені чекбокси без живого проходження — недостатньо.</p>
       <div class="callout">Після курсу: bootstrap реального проєкту Mode A + одна повна сесія P0-001 + lint docs.</div>`
+  },
+  {
+    id: "m11", title: "11. Harness 2026",
+    html: `<h2>Контекст з відео й індустрії</h2>
+      <p>Додатковий модуль: чому MIN схожий на те, про що говорять у 2026 про harness для AI-агентів.</p>
+      <h3>Матеріали</h3>
+      <ul>
+        <li><a href="https://youtu.be/tC28qXlPHC0" target="_blank" rel="noopener" style="color:var(--blue)">HARNESS — ТОП-7 і 1% в 2026</a></li>
+        <li><a href="https://youtu.be/OSG05Xq7np4" target="_blank" rel="noopener" style="color:var(--blue)">Harness і Ralph Loop</a></li>
+        <li><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener" style="color:var(--blue)">OpenAI: Harness engineering</a></li>
+      </ul>
+      <h3>Ключова фраза</h3>
+      <p><strong>Humans steer. Agents execute.</strong> Люди задають напрямок і правила; агент працює в рамках repo.</p>
+      <h3>Що збігається з MIN</h3>
+      <ul>
+        <li><code>docs/</code> = system of record (wiki), не чат</li>
+        <li><code>CLAUDE.md</code> = <strong>карта</strong>, не 1000-рядкова інструкція</li>
+        <li>Що агент не бачить у repo — для нього «не існує» → ingest у <code>docs/</code></li>
+        <li><code>TASKS.md</code> = плани як артефакти з Done when</li>
+        <li>Lint docs = «garbage collection» для wiki</li>
+      </ul>
+      <h3>Ralph Loop (простими словами)</h3>
+      <p>Цикл: <em>зробив → перевірив → виправив → повтори</em>, поки задача не закрита. У великих системах — годинами на PR.</p>
+      <p><span class="badge safe">MIN</span> Mini-Ralph: ітерації в межах <strong>однієї P0</strong>, self-review diff, людина робить <code>git diff</code> і verification. <span class="badge risk">Не</span> auto-deploy і не RISKY без approval.</p>
+      <pre>Mini-Ralph у MIN:
+P0 з TASKS → агент змінює → self-review → людина verify
+→ SESSION + ingest → [x] P0</pre>
+      <div class="callout">MIN — harness для одного проєкту й одного оператора, не фабрика з мільйоном рядків. Ідея та сама, масштаб інший.</div>`
   }
 ];
 
@@ -440,6 +468,22 @@ const QUIZ = [
       { title: "Source of truth", question: "Конфлікт: файл vs пам'ять агента?",
         options: [{text:"Пріоритет у файлу проєкту",correct:true},{text:"Пріоритет у агента",correct:false},{text:"Видалити файл",correct:false}],
         feedback:"Правило 8: файли > agent memory." }
+    ]
+  },
+  {
+    id: "harness2026", label: "Harness 2026", questions: [
+      { title: "Steer vs execute", question: "«Humans steer. Agents execute» у MIN означає…",
+        options: [{text:"Люди задають правила й задачі; агент працює в repo",correct:true},{text:"Агент сам вирішує пріоритети",correct:false},{text:"Люди пишуть увесь код",correct:false}],
+        feedback:"Напрямок і approval — людина. Виконання в межах CLAUDE/TASKS — агент." },
+      { title: "CLAUDE.md", question: "Чому CLAUDE.md має бути коротким (як «карта»)?",
+        options: [{text:"Контекст агента обмежений; деталі в docs/",correct:true},{text:"Щоб агент менше читав",correct:false},{text:"GitHub вимагає <100 рядків",correct:false}],
+        feedback:"OpenAI harness: AGENTS.md = TOC, docs/ = deep knowledge. Monolithic manual rots." },
+      { title: "Ralph Loop", question: "Mini-Ralph у MIN — це…",
+        options: [{text:"Ітерації на одній P0 з verify, людина в loop",correct:true},{text:"Автономний deploy без approval",correct:false},{text:"Видалення TASKS.md після циклу",correct:false}],
+        feedback:"Ralph = iterate until done. MIN: iterate within P0 + human git diff, no auto-RISKY." },
+      { title: "Невидиме для агента", question: "Домовленість у Slack не в docs/ — для агента це…",
+        options: [{text:"Ніби не існує — треба ingest у docs/",correct:true},{text:"Агент все одно пам'ятає",correct:false},{text:"Достатньо сказати в наступному чаті",correct:false}],
+        feedback:"Repo-local artifacts = what agent can reason over. Legibility = in docs/." }
     ]
   }
 ];
