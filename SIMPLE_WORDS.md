@@ -46,7 +46,7 @@
 
 ## З чого почати (3 кроки)
 
-1. **Простими словами** — цей файл або в `index.html` → Теорія → **«0. Простими словами»**.
+1. **Простими словами** — [simple-words.html](simple-words.html) або в `index.html` → Теорія → **«0. Простими словами»**.
 2. **Курс** — `index.html`, модулі 0→1→2, потім практика «Bootstrap».
 3. **Справжній проєкт** — коли зрозуміло, `cp template/` у свою папку + `PROMPT.md` Mode A.
 
@@ -77,7 +77,7 @@
 
 **Ralph Loop у MIN** = кілька ітерацій на **одній** задачі P0, ти дивишся `git diff` і закриваєш verification — не «агент сам у прод».
 
-Детальніше: `index.html` → модуль **11. Harness 2026** або урок 11 у `course.html`.
+Детальніше: [index.html](index.html) → модуль **11. Harness 2026** або [урок 11](course.html?lesson=lessons%2F11-harness-2026-context.md).
 
 ---
 

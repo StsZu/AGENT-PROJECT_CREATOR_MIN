@@ -4,78 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Уроки — Harness Engineering</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <style>
-    :root {
-      --bg: #0c0e14; --panel: #141820; --border: #2a3142; --text: #e8ecf4;
-      --muted: #8b95a8; --accent: #7c6bf0; --cyan: #56d4dd; --green: #3fb950;
-      --font: "SF Mono", Menlo, Consolas, monospace;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
-    .wrap { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
-    @media (max-width: 800px) { .wrap { grid-template-columns: 1fr; } aside { border-right: none; border-bottom: 1px solid var(--border); } }
-    aside { background: var(--panel); border-right: 1px solid var(--border); padding: 16px; }
-    aside h1 { font-size: 0.95rem; margin: 0 0 12px; color: var(--accent); }
-    .nav a { display: block; color: var(--muted); text-decoration: none; font-size: 0.82rem; padding: 7px 10px; border-radius: 6px; margin-bottom: 2px; }
-    .nav a:hover, .nav a.active { background: #1c2230; color: var(--text); }
-    .nav .back { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; }
-    main { padding: 24px 32px 48px; max-width: 820px; }
-    main :is(h1,h2,h3) { color: var(--cyan); }
-    main code { font-family: var(--font); background: #0c0e14; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: var(--green); }
-    main pre { background: #0c0e14; border: 1px solid var(--border); padding: 14px; border-radius: 8px; overflow-x: auto; }
-    main pre code { background: none; padding: 0; }
-    main table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 12px 0; }
-    main th, main td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
-    .loading { color: var(--muted); }
-  </style>
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
-<body>
-  <div class="wrap">
-    <aside>
-      <h1>Harness Engineering</h1>
-      <nav class="nav" id="lessonNav"></nav>
-      <div class="nav back">
-        <a href="index.html">← Тренажер</a>
-        <a href="cheatsheet.html">Шпаргалка</a>
-      </div>
-    </aside>
-    <main id="content"><p class="loading">Завантаження…</p></main>
+<body data-page="course">
+  <div class="site-shell">
+    <nav class="site-nav">
+      <a href="index.html" data-nav="trainer">Тренажер</a>
+      <a href="simple-words.html" data-nav="simple">Простими словами</a>
+      <a href="course.html" data-nav="course">Уроки</a>
+      <a href="cheatsheet.html" data-nav="cheats">Шпаргалка</a>
+      <span class="spacer"></span>
+      <a href="standart.html" data-nav="standart">STANDART</a>
+    </nav>
+
+    <header class="site-header">
+      <h1>Уроки Markdown</h1>
+      <p class="lead">12 уроків від «простими словами» до harness 2026. Почни з уроку 0, якщо вперше в kit.</p>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-sidebar">
+        <h2>Зміст курсу</h2>
+        <nav id="lessonNav"></nav>
+        <div class="side-divider">
+          <a class="side-link" href="simple-words.html">Простими словами</a>
+          <a class="side-link" href="index.html">← Тренажер</a>
+        </div>
+      </aside>
+      <article class="doc-panel">
+        <div id="content" class="doc-content"><p class="loading">Завантаження…</p></div>
+      </article>
+    </div>
   </div>
+
   <script src="content.js"></script>
+  <script src="assets/marked.min.js"></script>
+  <script src="assets/render-md.js"></script>
+  <script src="assets/nav.js"></script>
   <script>
     const LESSONS = [
-      { id: "00", file: "lessons/00-simple-words.md", title: "0. Простими словами" },
-      { id: "01", file: "lessons/01-harness-mindset.md", title: "1. Harness mindset" },
-      { id: "02", file: "lessons/02-folder-structure.md", title: "2. Структура MIN" },
-      { id: "03", file: "lessons/03-twelve-rules.md", title: "3. 12 правил" },
-      { id: "04", file: "lessons/04-bootstrap-mode-a.md", title: "4. Bootstrap A" },
-      { id: "05", file: "lessons/05-session-harness.md", title: "5. Session harness" },
-      { id: "06", file: "lessons/06-tasks-protocol.md", title: "6. TASKS" },
-      { id: "07", file: "lessons/07-work-modes-safety.md", title: "7. WORK_MODES" },
-      { id: "08", file: "lessons/08-migration-mode-b.md", title: "8. Migration B" },
-      { id: "09", file: "lessons/09-agent-memory.md", title: "9. Agent memory" },
-      { id: "10", file: "lessons/10-signoff-demo.md", title: "10. Sign-off" },
-      { id: "11", file: "lessons/11-harness-2026-context.md", title: "11. Harness 2026 ★" }
+      { file: "lessons/00-simple-words.md", title: "0. Простими словами" },
+      { file: "lessons/01-harness-mindset.md", title: "1. Harness mindset" },
+      { file: "lessons/02-folder-structure.md", title: "2. Структура MIN" },
+      { file: "lessons/03-twelve-rules.md", title: "3. 12 правил" },
+      { file: "lessons/04-bootstrap-mode-a.md", title: "4. Bootstrap A" },
+      { file: "lessons/05-session-harness.md", title: "5. Session harness" },
+      { file: "lessons/06-tasks-protocol.md", title: "6. TASKS" },
+      { file: "lessons/07-work-modes-safety.md", title: "7. WORK_MODES" },
+      { file: "lessons/08-migration-mode-b.md", title: "8. Migration B" },
+      { file: "lessons/09-agent-memory.md", title: "9. Agent memory" },
+      { file: "lessons/10-signoff-demo.md", title: "10. Sign-off" },
+      { file: "lessons/11-harness-2026-context.md", title: "11. Harness 2026 ★" }
     ];
+
     const nav = document.getElementById("lessonNav");
     nav.innerHTML = LESSONS.map(l =>
-      `<a href="#" data-file="${l.file}">${l.title}</a>`
+      `<a href="#" class="side-link" data-file="${l.file}">${l.title}</a>`
     ).join("");
+
     function loadLesson(file) {
       nav.querySelectorAll("a").forEach(a => a.classList.toggle("active", a.dataset.file === file));
       const md = typeof LESSON_MD !== "undefined" ? LESSON_MD[file] : null;
-      if (!md) {
-        document.getElementById("content").innerHTML = `<p>Урок не знайдено: ${file}. Запустіть <code>node scripts/build-content.js</code>.</p>`;
-        return;
-      }
-      document.getElementById("content").innerHTML = marked.parse(md);
+      renderMarkdown(md, document.getElementById("content"), { demoteH1: true });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
     nav.querySelectorAll("a[data-file]").forEach(a => {
-      a.addEventListener("click", e => { e.preventDefault(); loadLesson(a.dataset.file); history.replaceState(null, "", "?lesson=" + encodeURIComponent(a.dataset.file)); });
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        loadLesson(a.dataset.file);
+        history.replaceState(null, "", "?lesson=" + encodeURIComponent(a.dataset.file));
+      });
     });
+
     const q = new URLSearchParams(location.search).get("lesson");
-    loadLesson(q && LESSON_MD && LESSON_MD[q] ? q : LESSONS[0].file);
+    const initial = q && LESSON_MD && LESSON_MD[q] ? q : LESSONS[0].file;
+    loadLesson(initial);
   </script>
 </body>
 </html>

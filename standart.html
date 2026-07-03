@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Шпаргалка — Harness Engineering</title>
+  <title>STANDART — Harness Engineering</title>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
-<body data-page="cheats">
+<body data-page="standart">
   <div class="site-shell">
     <nav class="site-nav">
       <a href="index.html" data-nav="trainer">Тренажер</a>
@@ -18,8 +18,12 @@
     </nav>
 
     <header class="site-header">
-      <h1>Шпаргалка</h1>
-      <p class="lead">Команди, файли MIN, safety — для швидкого згадування під час роботи.</p>
+      <h1>STANDART — 12 правил</h1>
+      <p class="lead">Короткий стандарт MIN. Після «Простими словами» — перед повною METHODOLOGY.</p>
+      <div class="start-card">
+        <a href="simple-words.html">← Простими словами</a>
+        <a href="course.html?lesson=lessons%2F03-twelve-rules.md">Урок 3 (12 правил)</a>
+      </div>
     </header>
 
     <article class="doc-panel">
@@ -33,7 +37,7 @@
   <script src="assets/nav.js"></script>
   <script>
     renderMarkdown(
-      typeof CHEATSHEET_MD !== "undefined" ? CHEATSHEET_MD : null,
+      typeof STANDART_MD !== "undefined" ? STANDART_MD : null,
       document.getElementById("content"),
       { demoteH1: true }
     );

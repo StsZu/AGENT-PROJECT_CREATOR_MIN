@@ -4,7 +4,7 @@ const THEORY = [
   {
     id: "m0", title: "0. Простими словами",
     html: `<h2>Ідея проєкту без жаргону</h2>
-      <p>Якщо harness, ingest і wiki звучать незрозуміло — почни тут. Повний текст: <a href="SIMPLE_WORDS.md" target="_blank" rel="noopener" style="color:var(--blue)">SIMPLE_WORDS.md</a>.</p>
+      <p>Якщо harness, ingest і wiki звучать незрозуміло — почни тут. Повна версія: <a href="simple-words.html" style="color:var(--blue)">Простими словами</a> (оформлена сторінка).</p>
       <h3>Одне речення</h3>
       <p><strong>MIN</strong> — спосіб тримати будь-який проєкт у порядку: одна папка, список задач, щоденник, блокнот знань. Щоб і ти, і AI не губили контекст.</p>
       <h3>Аналогія</h3>
@@ -816,9 +816,9 @@ function showQuizResults(pool) {
 }
 
 function initTrainer() {
-  document.querySelectorAll(".top-nav .tab").forEach(tab => {
+  document.querySelectorAll(".site-nav .tab").forEach(tab => {
     tab.addEventListener("click", () => {
-      document.querySelectorAll(".top-nav .tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".site-nav .tab").forEach(t => t.classList.remove("active"));
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
       tab.classList.add("active");
       document.getElementById("page-" + tab.dataset.page).classList.add("active");

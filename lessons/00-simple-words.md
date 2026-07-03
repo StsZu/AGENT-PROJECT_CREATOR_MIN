@@ -2,7 +2,7 @@
 
 **Читай цей урок першим**, якщо терміни harness, ingest, lint, wiki здаються незрозумілими.
 
-Повна версія: [SIMPLE_WORDS.md](../SIMPLE_WORDS.md)
+Повна версія: [simple-words.html](../simple-words.html) — оформлена сторінка курсу
 
 ---
 

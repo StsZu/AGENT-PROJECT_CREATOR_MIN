@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harness Engineering — MIN Project Creator</title>
+  <link rel="stylesheet" href="assets/site.css" />
   <style>
     :root {
       --bg: #0c0e14; --panel: #141820; --border: #2a3142; --text: #e8ecf4;
@@ -18,21 +19,8 @@
       color: var(--text); font-family: Inter, system-ui, sans-serif;
     }
     .wrap { max-width: 1200px; margin: 0 auto; padding: 16px 20px 40px; }
-    .top-nav {
-      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
-      margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
-    }
-    .top-nav a, .top-nav button.tab {
-      color: var(--muted); text-decoration: none; font-size: 0.86rem;
-      padding: 6px 14px; border-radius: 8px; border: 1px solid transparent;
-      background: transparent; cursor: pointer; font-family: inherit;
-    }
-    .top-nav a:hover, .top-nav button.tab:hover { color: var(--text); background: #1c2230; }
-    .top-nav a.active, .top-nav button.tab.active {
-      color: var(--accent); border-color: var(--accent);
-      background: rgba(124, 107, 240, 0.12);
-    }
-    .top-nav .ext { margin-left: auto; }
+    .site-nav .nav-sep { color: var(--border); padding: 0 4px; user-select: none; }
+    .site-nav .brand { color: var(--accent); font-weight: 600; cursor: default; }
     header h1 { font-size: 1.35rem; margin: 0 0 6px; }
     header p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; max-width: 820px; }
     .page { display: none; }
@@ -59,6 +47,8 @@
     .theory h2 { font-size: 1.15rem; margin: 0 0 12px; color: var(--cyan); }
     .theory h3 { font-size: 0.95rem; margin: 18px 0 8px; color: var(--purple); }
     .theory p, .theory li { font-size: 0.9rem; line-height: 1.6; color: #c5cdd9; }
+    .theory a { color: var(--blue); }
+    .theory a:hover { text-decoration: underline; }
     .theory ul, .theory ol { padding-left: 1.2rem; }
     .theory code, .term-out code {
       font-family: var(--font); font-size: 0.82rem;
@@ -172,24 +162,26 @@
     .checklist li:not(.checked)::before { content: "○ "; color: var(--muted); }
   </style>
 </head>
-<body>
+<body data-page="trainer">
   <div class="wrap">
-    <nav class="top-nav">
+    <nav class="site-nav">
       <button type="button" class="tab active" data-page="theory">Теорія</button>
       <button type="button" class="tab" data-page="practice">Практика</button>
       <button type="button" class="tab" data-page="quiz">Quiz</button>
-      <a href="course.html">Уроки MD</a>
-      <a href="cheatsheet.html">Шпаргалка</a>
-      <a href="SIMPLE_WORDS.md" target="_blank" rel="noopener">Простими словами</a>
-      <a href="STANDART.md" class="ext" target="_blank" rel="noopener">STANDART ↗</a>
+      <span class="nav-sep">|</span>
+      <a href="simple-words.html" data-nav="simple">Простими словами</a>
+      <a href="course.html" data-nav="course">Уроки</a>
+      <a href="cheatsheet.html" data-nav="cheats">Шпаргалка</a>
+      <span class="spacer"></span>
+      <a href="standart.html" data-nav="standart">STANDART</a>
     </nav>
-    <header>
+    <header class="site-header">
       <h1>Harness Engineering — MIN Project Creator</h1>
-      <p>
+      <p class="lead">
         Навчальний курс: як створити <strong>універсальний AI-ready проєкт</strong> для будь-якої задачі.
-        <strong style="color:var(--yellow)">Вперше тут?</strong> Теорія → <strong>«0. Простими словами»</strong> або
-        <a href="SIMPLE_WORDS.md" style="color:var(--cyan)">SIMPLE_WORDS.md</a> — ідея без жаргону.
-        Потім модулі 1–10, практика, quiz.
+        <strong style="color:var(--yellow)">Вперше тут?</strong>
+        <a href="simple-words.html">Простими словами</a> або Теорія → <strong>«0. Простими словами»</strong>,
+        потім модулі 1–11, практика, quiz.
       </p>
     </header>
 
@@ -248,6 +240,7 @@
       </div>
     </div>
   </div>
+  <script src="assets/nav.js"></script>
   <script src="trainer.js"></script>
 </body>
 </html>

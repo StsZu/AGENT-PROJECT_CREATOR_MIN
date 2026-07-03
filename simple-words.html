@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Простими словами — Harness Engineering</title>
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body data-page="simple">
+  <div class="site-shell">
+    <nav class="site-nav">
+      <a href="index.html" data-nav="trainer">Тренажер</a>
+      <a href="simple-words.html" data-nav="simple">Простими словами</a>
+      <a href="course.html" data-nav="course">Уроки</a>
+      <a href="cheatsheet.html" data-nav="cheats">Шпаргалка</a>
+      <span class="spacer"></span>
+      <a href="standart.html" data-nav="standart">STANDART</a>
+    </nav>
+
+    <header class="site-header">
+      <h1>Простими словами</h1>
+      <p class="lead">Ідея MIN kit і harness без жаргону. Читай перед технічними модулями та STANDART.</p>
+      <div class="start-card">
+        <a href="index.html" class="primary">Відкрити тренажер → модуль 0</a>
+        <a href="course.html?lesson=lessons%2F00-simple-words.md">Урок 0 (MD)</a>
+      </div>
+    </header>
+
+    <div class="doc-layout">
+      <aside class="doc-sidebar">
+        <h2>На цій сторінці</h2>
+        <nav id="toc"></nav>
+        <div class="side-divider">
+          <a class="side-link" href="index.html">← Тренажер</a>
+          <a class="side-link" href="cheatsheet.html">Шпаргалка</a>
+        </div>
+      </aside>
+      <article class="doc-panel">
+        <div id="content" class="doc-content"><p class="loading">Завантаження…</p></div>
+      </article>
+    </div>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="assets/marked.min.js"></script>
+  <script src="assets/render-md.js"></script>
+  <script src="assets/nav.js"></script>
+  <script>
+    renderMarkdown(
+      typeof SIMPLE_WORDS_MD !== "undefined" ? SIMPLE_WORDS_MD : null,
+      document.getElementById("content"),
+      { tocEl: document.getElementById("toc") }
+    );
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Шпаргалка Harness Engineering (MIN)
 
-> Ідея без жаргону: [SIMPLE_WORDS.md](SIMPLE_WORDS.md)
+> Ідея без жаргону: [simple-words.html](simple-words.html)
 
 ## Словник в одному рядку
 

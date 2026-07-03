@@ -6,14 +6,14 @@
 
 ## Швидкий старт
 
-**Вперше?** Прочитай [SIMPLE_WORDS.md](SIMPLE_WORDS.md) (5–10 хв) — ідея kit простими словами, словник термінів.
+**Вперше?** Відкрий [simple-words.html](simple-words.html) (5–10 хв) — ідея kit простими словами, словник термінів.
 
 ```bash
 open index.html
 # → Теорія → «0. Простими словами»
 ```
 
-Уроки й шпаргалка працюють **без сервера** (контент у `content.js`). Після змін у `lessons/*.md` або `cheatsheet.md`:
+Уроки, «простими словами» і шпаргалка працюють **без сервера** (контент у `content.js`, стилі в `assets/site.css`). Після змін у `lessons/*.md`, `SIMPLE_WORDS.md`, `cheatsheet.md` або `STANDART.md`:
 
 ```bash
 node scripts/build-content.js
@@ -23,9 +23,11 @@ node scripts/build-content.js
 
 | Сторінка | Зміст |
 |---|---|
-| [index.html](index.html) | Теорія (10 модулів) · Практика (8 сценаріїв) · Quiz |
+| [index.html](index.html) | Теорія (11 модулів) · Практика (8 сценаріїв) · Quiz |
+| [simple-words.html](simple-words.html) | Ідея kit простими словами (старт тут) |
 | [course.html](course.html) | Markdown-уроки |
 | [cheatsheet.html](cheatsheet.html) | Шпаргалка команд і файлів |
+| [standart.html](standart.html) | 12 правил MIN (оформлено) |
 
 ### Додаткові матеріали (відео)
 
